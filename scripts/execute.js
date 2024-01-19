@@ -14,7 +14,7 @@ async function main() {
   });
 
   const AccountFactory = await hre.ethers.getContractFactory("AccountFactory");
-  const [signer0] = await hre.ethers.getSigners();
+  const [signer0, signer1] = await hre.ethers.getSigners();
   const address0 = await signer0.getAddress();
   const initCode = "0x";
   // FACTORY_ADDRESS +
@@ -34,14 +34,17 @@ async function main() {
     nonce: await entryPoint.getNonce(sender, 0),
     initCode,
     callData: Account.interface.encodeFunctionData("execute"),
-    callGasLimit: 200_000,
-    verificationGasLimit: 200_000,
-    preVerificationGas: 50_000,
+    callGasLimit: 400_000,
+    verificationGasLimit: 400_000,
+    preVerificationGas: 100_000,
     maxFeePerGas: hre.ethers.parseUnits("10", "gwei"),
     maxPriorityFeePerGas: hre.ethers.parseUnits("5", "gwei"),
     paymasterAndData: PM_ADDRESS,
     signature: "0x",
   };
+
+  const userOpHash = await entryPoint.getUserOpHash(userOp);
+  userOp.signature = signer0.signMessage(hre.ethers.getBytes(userOpHash));
 
   const tx = await entryPoint.handleOps([userOp], address0);
   const receipt = await tx.wait();
