@@ -1,13 +1,8 @@
-# Sample Hardhat Project
+# Smart Accounts Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This is the code built in the "Account Abstraction From Scratch Course":
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+- Part 1: https://youtu.be/NM04uxcCOEw
+- Part 2: https://youtu.be/2LGpEobxIBA
+- Part 3: https://youtu.be/vj2gklqLRSA
+- Part 4: https://youtu.be/AY4jI0GXKBc

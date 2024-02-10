@@ -1,6 +1,6 @@
 const hre = require("hardhat");
 
-const ACCOUNT_ADDR = "0xa16E02E87b7454126E5E10d957A927A7F5B5d2be";
+const ACCOUNT_ADDR = "0xd434fe29413880281134b9d552426c950d4e2440";
 
 async function main() {
   const account = await hre.ethers.getContractAt("Account", ACCOUNT_ADDR);
